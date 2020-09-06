@@ -5,9 +5,12 @@
   "author": "Dante Calderon<mail@dantecalderon.dev>",
   "scripts": {
     "start": "nodemon",
-    "test": "jest"
+    "test": "jest",
+    "example": "ts-node example/app.ts"
   },
   "devDependencies": {
+    "@types/express": "^4.17.8",
+    "@types/express-session": "^1.17.0",
     "@types/jest": "^25.1.4",
     "@types/node": "^13.9.3",
     "jest": "^25.1.0",
@@ -20,5 +23,12 @@
   },
   "jest": {
     "preset": "ts-jest"
+  },
+  "dependencies": {
+    "@types/helmet": "^0.0.48",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "helmet": "^4.1.0",
+    "reflect-metadata": "^0.1.13"
   }
 }
