@@ -1,6 +1,5 @@
 /**
  * List of supported Http Methods
- * @package Neo
  */
 export enum HttpMethod {
   GET = 'get',
