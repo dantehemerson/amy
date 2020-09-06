@@ -13,7 +13,7 @@ export class AmyApplication {
   private static _singleton: AmyApplication
 
   constructor(private readonly config: AmyAppConfig) {
-    console.log('Creating App...')
+    console.log('Bootstraping App...')
     AmyApplication._singleton = this
 
     this.expressApp = Express()
