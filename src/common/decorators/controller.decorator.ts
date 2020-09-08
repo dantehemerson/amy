@@ -1,5 +1,6 @@
 import 'reflect-metadata'
 import { HTTP_CONTROLLER } from '../constants'
+import { IControllerData } from './interfaces/controller-metadata.interface'
 
 /**
  * Controller is the decorator to specify that the class above is
@@ -15,23 +16,4 @@ export function Controller(data?: IControllerData): ClassDecorator {
   return (target: object) => {
     Reflect.defineMetadata(HTTP_CONTROLLER, newData, target)
   }
-}
-
-/**
- * Configuration data for controller decorator
- *
- */
-export interface IControllerData {
-  /**
-   * URL prefix
-   *
-   * @default /
-   */
-  prefix?: string
-  /**
-   * Define whether you want to receives a Models Container
-   *
-   * @default true
-   */
-  modelsInjection?: boolean
 }
