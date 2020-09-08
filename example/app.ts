@@ -1,3 +1,11 @@
-import { UserController } from './src/app.controller'
+import { AmyApplication } from '../src/core'
 
-const controller = new UserController()
+async function bootstrap() {
+  const app = new AmyApplication({
+    port: 400
+  })
+
+  // app.listen()
+}
+
+bootstrap()
