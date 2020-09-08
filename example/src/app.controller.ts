@@ -1,4 +1,9 @@
-import { Controller } from '../../src/common'
+import { Controller, Get } from '../../src/common'
 
 @Controller()
-export class UserController {}
+export class UserController {
+  @Get()
+  getUser(): string {
+    return 'hola'
+  }
+}
