@@ -1,7 +1,8 @@
-import Express from 'express'
+import Express, { response } from 'express'
 import * as http from 'http'
 import * as https from 'https'
 import { AmyAppConfig } from './interfaces/app-config.interface'
+import { Repository } from './repository'
 
 export class AmyApplication {
   private readonly expressApp: Express.Application
@@ -11,6 +12,8 @@ export class AmyApplication {
   private readonly server: http.Server | https.Server
 
   private static _singleton: AmyApplication
+
+  private repository: Repository
 
   constructor(private readonly config: AmyAppConfig) {
     console.log('Bootstraping App...')
