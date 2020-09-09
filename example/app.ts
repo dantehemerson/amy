@@ -2,10 +2,12 @@ import { AmyApplication } from '../src/core'
 
 async function bootstrap() {
   const app = new AmyApplication({
-    port: 400
+    port: 4023
   })
 
-  // app.listen()
+  app.start(() => {
+    console.log('Listening on http://localhost:4023')
+  })
 }
 
 bootstrap()
