@@ -1,3 +1,13 @@
-import { UserController } from './src/app.controller'
+import { AmyApplication } from '../src/core'
 
-const controller = new UserController()
+async function bootstrap() {
+  const app = new AmyApplication({
+    port: 4023
+  })
+
+  app.start(() => {
+    console.log('Listening on http://localhost:4023')
+  })
+}
+
+bootstrap()
