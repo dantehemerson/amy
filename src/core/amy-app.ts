@@ -17,5 +17,36 @@ export class AmyApplication {
     AmyApplication._singleton = this
 
     this.expressApp = Express()
+
+    // Initialize our repository
+    this.repository = new Repository()
+
+    this.loadSettings()
+
+    if (this.config.sslOptions) {
+      this.server = https.createServer(this.config.sslOptions, this.expressApp)
+    } else {
+      this.server = http.createServer(this.expressApp)
+    }
+  }
+
+  public static get singleton(): AmyApplication {
+    if (this._singleton === undefined) {
+      throw new Error('AmyApplication is not initializated')
+    }
+    return this._singleton
+  }
+
+  private loadSettings() {
+    this.expressApp.use(Express.json())
+  }
+
+  start(onStart?: () => unknown) {
+    if (this.config !== undefined && this.config.port) {
+      this.server.listen(this.config.port, () => {
+        console.log('AmyApp has started')
+        if (onStart) onStart()
+      })
+    }
   }
 }
