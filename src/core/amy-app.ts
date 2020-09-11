@@ -1,8 +1,9 @@
-import Express, { response } from 'express'
+import Express, { response, Router } from 'express'
 import * as http from 'http'
 import * as https from 'https'
 import { AmyAppConfig } from './interfaces/app-config.interface'
 import { Repository } from './repository'
+import { RepositoryFactory } from './factory'
 
 export class AmyApplication {
   private readonly expressApp: Express.Application
@@ -20,6 +21,9 @@ export class AmyApplication {
     AmyApplication._singleton = this
 
     this.expressApp = Express()
+    this.expressRouter = Router()
+
+    this.expressApp.use(this.expressRouter)
 
     // Initialize our repository
     this.repository = new Repository()
@@ -31,6 +35,8 @@ export class AmyApplication {
     } else {
       this.server = http.createServer(this.expressApp)
     }
+
+    RepositoryFactory.load(config, this.repository, this.expressRouter)
   }
 
   public static get singleton(): AmyApplication {
