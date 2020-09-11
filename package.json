@@ -6,7 +6,8 @@
   "scripts": {
     "start": "nodemon",
     "test": "jest",
-    "example": "ts-node example/app.ts"
+    "example": "ts-node example/app.ts",
+    "example:dev": "nodemon example/app.ts"
   },
   "license": "MIT",
   "devDependencies": {

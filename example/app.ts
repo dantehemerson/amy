@@ -1,8 +1,10 @@
 import { AmyApplication } from '../src/core'
+import { UserController } from './src/user.controller'
 
 async function bootstrap() {
   const app = new AmyApplication({
-    port: 4023
+    port: 4023,
+    controllers: [UserController]
   })
 
   app.start(() => {
